@@ -1,10 +1,7 @@
 import * as React from 'react';
 
-import TimelineDot from '@mui/lab/TimelineDot';
-import FastfoodIcon from '@mui/icons-material/Fastfood';
-import LaptopMacIcon from '@mui/icons-material/LaptopMac';
-import HotelIcon from '@mui/icons-material/Hotel';
-import RepeatIcon from '@mui/icons-material/Repeat';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Typography from '@mui/material/Typography';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Stack, Divider, Grid } from '@mui/material';
@@ -12,16 +9,21 @@ import IUImage from '../../assets/career/cropped-integrasia-logo.png'
 import CPImage from '../../assets/career/cp2.png'
 import { motion } from 'framer-motion'
 
+
 export default function CareerPage() {
+  const theme = useTheme();
+  const matchesSm = useMediaQuery(theme.breakpoints.up('sm'));
+  console.log("is lg", matchesSm)
+
   return (
     <motion.div
       initial={{ opacity: 0, x: '-100' }}
       animate={{ opacity: 1, x: 0 }}
-    transition={{ delay: 0.2, }}
+      transition={{ delay: 0.2, }}
     >
       <div style={{ paddingLeft: 30, paddingRight: 30 }}>
         {/* <Stack sx={{ px: 10, color: '#333333' }} spacing={4} direction="column" justifyContent="flex-start" divider={<Divider sx={{ bgcolor: "#999999" }} flexItem />}> */}
-        <Grid container spacing={10} sx={{ py: 4 }} alignItems="center">
+        <Grid container spacing={matchesSm ? 10 : 4} sx={{ py: 4 }} alignItems="center">
           <Grid item md={4}>
             <img
               src={`${IUImage}?fit=crop&auto=format`}
@@ -34,7 +36,7 @@ export default function CareerPage() {
           <Grid item md={8}>
             <div>
               {/* <Typography variant='h6' sx={{ color: '#333333', fontWeight: 'bold', letterSpacing: 1 }}>INTEGRASIA UTAMA</Typography> */}
-              <Stack sx={{ py: 1 }} direction="row" spacing={5} alignItems="center" justifyContent="flex-start" divider={<Divider orientation="vertical" flexItem sx={{ bgcolor: "#999999" }} />}>
+              <Stack sx={{ py: 1 }} direction={matchesSm ? "row" : "column"} spacing={matchesSm ? 5 : 1} alignItems="center" justifyContent="flex-start" divider={<Divider orientation="vertical" flexItem sx={{ bgcolor: "#999999" }} />}>
                 <Typography variant='body2' sx={{ color: '#333333', fontWeight: 'bold', fontStyle: 'italic' }}>FRONTEND DEVELOPER</Typography>
                 <Typography variant='body1' sx={{ color: '#333333', fontWeight: 'bold', }}>April 2018 - Present</Typography>
               </Stack>
@@ -58,7 +60,7 @@ export default function CareerPage() {
           </Grid>
         </Grid>
         <Divider />
-        <Grid container spacing={10} sx={{ py: 4 }} alignItems="center">
+        <Grid container spacing={matchesSm ? 10 : 4} sx={{ py: 4 }} alignItems="center">
           <Grid item md={4}>
             <Stack direction="row" justifyContent="center" alignItems="center">
               <img
@@ -74,7 +76,7 @@ export default function CareerPage() {
 
             <div>
               {/* <Typography variant='h6' sx={{ color: '#333333', fontWeight: 'bold', letterSpacing: 1 }}>CODEPOLITAN</Typography> */}
-              <Stack sx={{ py: 1 }} direction="row" spacing={5} alignItems="center" justifyContent="flex-start" divider={<Divider orientation="vertical" flexItem sx={{ bgcolor: "#999999" }} />}>
+              <Stack sx={{ py: 1 }} direction={matchesSm ? "row" : "column"} spacing={matchesSm ? 5 : 1} alignItems="center" justifyContent="flex-start" divider={<Divider orientation="vertical" flexItem sx={{ bgcolor: "#999999" }} />}>
                 <Typography variant='body2' sx={{ color: '#333333', fontWeight: 'bold', fontStyle: 'italic' }}>INTERN WEB DEVELOPER</Typography>
                 <Typography variant='body1' sx={{ color: '#333333', fontWeight: 'bold', }}>August 2016 - December 2016</Typography>
               </Stack>
